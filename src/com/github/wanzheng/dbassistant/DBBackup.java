@@ -9,6 +9,7 @@ import android.os.Environment;
 import android.util.Log;
 
 import java.io.*;
+import java.text.ParseException;
 
 public class DBBackup extends Activity
 {
@@ -33,8 +34,10 @@ public class DBBackup extends Activity
 
         Writer writer = null;
         try {
+            Log.d(TAG, "start exporting ...");
             writer = new BufferedWriter(new FileWriter(dumpFile));
             Exporter.dump(db, writer);
+            Log.d(TAG, "exporting done.");
         } catch (Exception e) {
             Log.e(TAG, "Failed to dump db: " + e);
         } finally {
@@ -46,5 +49,16 @@ public class DBBackup extends Activity
                 }
             }
         }
+        db.close();
+
+        db = SQLiteDatabase.openOrCreateDatabase(Environment.getExternalStorageDirectory() + "/new.db", null);
+        try {
+            Log.d(TAG, "start importing ...");
+            Importer.importDB(db, new FileReader(dumpFile));
+            Log.d(TAG, "importing done.");
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to import db: " + e);
+        }
+        db.close();
     }
 }

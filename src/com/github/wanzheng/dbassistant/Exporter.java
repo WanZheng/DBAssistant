@@ -73,6 +73,7 @@ public class Exporter {
         try {
             c = db.query(TABLE_MASTER, new String[]{"sql"}, "name=?", new String[]{tableName}, null, null, null);
             if (c.moveToFirst()) {
+                // writer.write("DROP TABLE " + tableName + ";\n");
                 writer.write(c.getString(0));
                 writer.write(";\n");
 
@@ -111,7 +112,7 @@ public class Exporter {
 
     private static void dumpRows(String tableName, Writer writer, Cursor c, int columnCount) throws IOException {
         StringBuilder headerBuilder =  new StringBuilder();
-        headerBuilder.append("INSERT INTO " + tableName + "(");
+        headerBuilder.append("INSERT INTO '" + tableName + "' (");
         for (int i=0; i<columnCount; i++) {
             if (i > 0) {
                 headerBuilder.append(", ");
