@@ -1,4 +1,4 @@
-package cos.db.backup;
+package com.github.wanzheng.dbassistant;
 
 import android.content.Context;
 import android.database.DatabaseErrorHandler;

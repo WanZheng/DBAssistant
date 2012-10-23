@@ -14,19 +14,20 @@
  * limitations under the License.
  */
 
-package cos.db.backup;
+package com.github.wanzheng.dbassistant;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 
 public class DBBackupAssistant {
     private static final String TAG = "DBBackupAssistant";
-    private static final String TABLE_MASTER = "sqlite_master1";
+    private static final String TABLE_MASTER = "sqlite_master";
 
     public static void dump(SQLiteDatabase db, Writer writer) throws IOException {
         ArrayList<String> tables = new ArrayList<String>();

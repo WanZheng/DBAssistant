@@ -1,4 +1,4 @@
-package cos.db.backup;
+package com.github.wanzheng.dbassistant;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -19,7 +19,7 @@ public class Provider extends ContentProvider {
     }
 
     public static Uri getUri() {
-        return Uri.parse("content://cos.db.backup/tb1/");
+        return Uri.parse("content://com.github.wanzheng.dbassistant/tb1/");
     }
 
     @Override

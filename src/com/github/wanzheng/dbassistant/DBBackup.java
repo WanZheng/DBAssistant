@@ -1,4 +1,4 @@
-package cos.db.backup;
+package com.github.wanzheng.dbassistant;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -20,14 +20,12 @@ public class DBBackup extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        /*
         ContentResolver resolver = getContentResolver();
         ContentValues values = new ContentValues();
         values.put("_id", 1);
         values.put("value", 100);
         values.put("name", "bob");
         resolver.insert(Provider.getUri(), values);
-        */
 
         File dbFile = getDatabasePath(Provider.DB_NAME);
         SQLiteDatabase db = SQLiteDatabase.openDatabase(dbFile.getAbsolutePath(), null, SQLiteDatabase.OPEN_READONLY);
