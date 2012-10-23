@@ -34,7 +34,7 @@ public class DBBackup extends Activity
         Writer writer = null;
         try {
             writer = new BufferedWriter(new FileWriter(dumpFile));
-            DBBackupAssistant.dump(db, writer);
+            Exporter.dump(db, writer);
         } catch (Exception e) {
             Log.e(TAG, "Failed to dump db: " + e);
         } finally {

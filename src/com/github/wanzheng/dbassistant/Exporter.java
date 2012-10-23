@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 
-public class DBBackupAssistant {
+public class Exporter {
     private static final String TAG = "DBBackupAssistant";
     private static final String TABLE_MASTER = "sqlite_master";
 
@@ -68,7 +68,7 @@ public class DBBackupAssistant {
         }
     }
 
-    private static void dump(SQLiteDatabase db, String tableName, Writer writer) throws IOException {
+    public static void dump(SQLiteDatabase db, String tableName, Writer writer) throws IOException {
         Cursor c = null;
         try {
             c = db.query(TABLE_MASTER, new String[]{"sql"}, "name=?", new String[]{tableName}, null, null, null);
