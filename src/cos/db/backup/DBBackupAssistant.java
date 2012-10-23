@@ -156,8 +156,8 @@ public class DBBackupAssistant {
                 writer.write(String.valueOf(c.getLong(col)));
                 break;
             case Cursor.FIELD_TYPE_STRING:
-                writer.write("'" + c.getString(col) + "'");
             default:
+                writer.write("'" + c.getString(col) + "'");
                 break;
         }
     }
